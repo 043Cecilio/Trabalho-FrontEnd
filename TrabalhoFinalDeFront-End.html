@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Trabalho de Front End</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #9dc2e6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    
+
+    h1 {
+      color: #03137f;
+      margin-bottom: 40px;
+      font-size: 2.5em;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px #03137f;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #042a50;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}
+  </style>
+</head>
+<body>
+
+  <h1>Trabalho de Front End</h1>
+
+  <div class="container">
+    <button onclick="jogoNumeroSecreto()">Exemplo 1 - Jogo dos Números Secretos</button>
+    <button onclick="jogoMedia()">Exemplo 2 - Jogo de Cálculo de Média</button>
+    <button onclick="somaNumeros()">Exemplo 3 - Soma dos Números</button>
+  </div>
+
+  <script>
+    // Exemplo 1
+    function jogoNumeroSecreto() {
+      const numeroSecreto = Math.floor(Math.random() * 10) + 1;
+      const tentativasMax = 3;
+      let acertou = false;
+
+      for (let tentativa = 1; tentativa <= tentativasMax; tentativa++) {
+        const palpite = parseInt(prompt(`Tentativa ${tentativa} de ${tentativasMax}:\nAdivinhe o número secreto (entre 1 e 10):`));
+
+        if (isNaN(palpite)) {
+          alert("Por favor, digite um número válido.");
+          tentativa--;
+          continue;
+        }
+
+        if (palpite === numeroSecreto) {
+          alert(`Parabéns! Você acertou o número secreto (${numeroSecreto}) na tentativa ${tentativa}!`);
+          acertou = true;
+          break;
+        } else if (palpite < numeroSecreto) {
+          alert("Errou! O número secreto é MAIOR.");
+        } else {
+          alert("Errou! O número secreto é MENOR.");
+        }
+      }
+
+      if (!acertou) {
+        alert(`Suas tentativas acabaram. O número secreto era ${numeroSecreto}.`);
+      }
+    }
+
+    // Exemplo 2
+    function jogoMedia() {
+      const nota1 = parseFloat(prompt("Digite a primeira nota:"));
+      const nota2 = parseFloat(prompt("Digite a segunda nota:"));
+      const media = (nota1 + nota2) / 2;
+      alert(`A média das notas é: ${media}`);
+    }
+
+    // Exemplo 3
+    function somaNumeros() {
+      const num1 = parseFloat(prompt("Digite o primeiro número:"));
+      const num2 = parseFloat(prompt("Digite o segundo número:"));
+      const soma = num1 + num2;
+      alert(`A soma dos números é: ${soma}`);
+    }
+  </script>
+
+</body>
+    <footer>
+  Desenvolvido por Gabriel Cecilio © 2025
+</footer>   
+</html>
